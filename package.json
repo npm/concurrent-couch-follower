@@ -1,0 +1,34 @@
+{
+  "name": "concurrent-couch-follower",
+  "version": "1.0.0",
+  "description": "a couch follower wrapper that you can use to be sure you don't miss any documents even if you process them asynchronously.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/npm/concurrent-couch-follower.git"
+  },
+  "keywords": [
+    "couch",
+    "sequence",
+    "changes",
+    "concurrent"
+  ],
+  "author": "Ryan Day <soldair@npmjs.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/npm/concurrent-couch-follower/issues"
+  },
+  "homepage": "https://github.com/npm/concurrent-couch-follower#readme",
+  "dependencies": {
+    "changes-stream": "^1.0.8",
+    "concurrent-seq-file": "^1.0.2",
+    "end-of-stream": "^1.1.0",
+    "pressure-stream": "0.0.2"
+  },
+  "devDependencies": {
+    "tape": "^4.2.2"
+  }
+}
