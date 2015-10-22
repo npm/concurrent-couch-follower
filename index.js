@@ -26,6 +26,8 @@ module.exports = function(handler,config){
     pressure.emit('error',err)
   })
 
+  changes.pipe(pressure)
+
   // just for logging. =)
   pressure.sequence = function(){
     return seq.value
