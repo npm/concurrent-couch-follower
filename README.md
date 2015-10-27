@@ -42,4 +42,4 @@ API
 
 - WARNING! stream.end()
  - this calls destroy on the changes-stream and the through instead of properly ending them.
-   this triggers a "premature close" error from `changes-stream` and is something that just has to be worked on. bind `error` or use `end-of-stream`
+    - this triggers a "premature close" error from `changes-stream` and is something that just has to be worked on. bind `error` or use `end-of-stream`
