@@ -24,7 +24,7 @@
   "homepage": "https://github.com/npm/concurrent-couch-follower#readme",
   "dependencies": {
     "changes-stream": "^1.0.8",
-    "concurrent-seq-file": "^1.0.2",
+    "concurrent-seq-file": "^1.0.3",
     "end-of-stream": "^1.1.0",
     "pressure-stream": "0.0.2"
   },
