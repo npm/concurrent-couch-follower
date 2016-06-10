@@ -13,7 +13,7 @@ module.exports = function (handler, config) {
   if (config.include_docs === undef) config.include_docs = true
 
   var seq = concurrentSeq(config.sequence || '.sequence')
-  config.since = seq.value
+  config.since = config.since || seq.value
 
   var changes = changesStream(config)
   var pressure = pressureStream(function (change, next) {
