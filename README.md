@@ -30,9 +30,9 @@ API
  - done, you must call this function when you are done processing the document.
 
 - options
-  a config object as passed to `changes-stream` but including these addtional properties.
+  a config object as passed to `changes-stream` but including these additional properties.
   - `sequence`, the name of the file to persist the sequence id
-  - `concurrency`, the maxumum number of documents to process at a time.
+  - `concurrency`, the maximum number of documents to process at a time.
   - `since`, update sequence to start from, 'now' will start it from latest
   - the `changes-stream` property `since` is populated from `since` if set. If not, by the value of the sequence file.
 
