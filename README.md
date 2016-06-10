@@ -13,7 +13,7 @@ changes(function(data,done){
   db:...,
   include_docs:true,
   sequence:'.sequence',
-  since:'now',
+  now:false,
   include_docs:true,
   concurrency:5
 })
@@ -33,8 +33,8 @@ API
   a config object as passed to `changes-stream` but including these additional properties.
   - `sequence`, the name of the file to persist the sequence id
   - `concurrency`, the maximum number of documents to process at a time.
-  - `since`, update sequence to start from, 'now' will start it from latest
-  - the `changes-stream` property `since` is populated from `since` if set. If not, by the value of the sequence file.
+  - the `changes-stream` property `since` is populated by the value of the sequence file and cannot be set from outside except if `now` is set to `true`.
+  - `now`, if `true`, set the `changes-stream` property `since` to "now"
 
 -  stream = changes(handle,options)
   - sream , return value is a readable object stream of `data` passed back with `done(err,data)`
