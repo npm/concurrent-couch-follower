@@ -1,7 +1,6 @@
 var changesStream = require('changes-stream')
 var pressureStream = require('pressure-stream')
 var concurrentSeq = require('concurrent-seq-file')
-var fs = require('fs')
 var undef
 
 module.exports = function (handler, config) {
@@ -13,10 +12,9 @@ module.exports = function (handler, config) {
   // include_docs by default
   if (config.include_docs === undef) config.include_docs = true
 
-  var sequenceFile = config.sequence || '.sequence'
-  var firstStart = !fs.existsSync(sequenceFile)
-  var seq = concurrentSeq(sequenceFile)
+  var seq = concurrentSeq(config.sequence || '.sequence')
   config.since = seq.value
+  var firstStart = (seq.value === 0)
   if (firstStart) {
     config.since = (config.now === true) ? 'now' : 0
   }
