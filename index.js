@@ -14,6 +14,10 @@ module.exports = function (handler, config) {
 
   var seq = concurrentSeq(config.sequence || '.sequence')
   config.since = seq.value
+  var firstStart = (seq.value === 0)
+  if (firstStart) {
+    config.since = (config.now === true) ? 'now' : 0
+  }
 
   var changes = changesStream(config)
   var pressure = pressureStream(function (change, next) {
