@@ -32,7 +32,20 @@ module.exports = function (handler, config) {
     low: config.low || config.concurrency || 4
   })
 
+  var changesStreamOnError = false;
   changes.on('error', function (err) {
+    console.error('Error in the changes-stream')
+    if (!changesStreamOnError) {
+      console.error('This is a new error. We add a listener to detect error recovery')
+      changes.on('readable', function () {
+        if (changesStreamOnError) {
+          changesStreamOnError = false;
+          console.error('Error recovery! We re-pipe changes to pressure')
+          changes.pipe(pressure)
+        }
+      });
+      changesStreamOnError = true;
+    }
     pressure.emit('error', err)
   })
 
