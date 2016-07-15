@@ -29,6 +29,7 @@
     "pressure-stream": "0.0.2"
   },
   "devDependencies": {
+    "mock-require": "^1.3.0",
     "tape": "^4.2.2"
   }
 }
