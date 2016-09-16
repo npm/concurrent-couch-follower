@@ -5,17 +5,21 @@ a couch follower wrapper that you can use to be sure you don't miss any document
 var changes = require('concurrent-couch-follower')
 var someAction = require(.....)
 
-changes(function(data,done){
-  someAction(data,function(){
-    done()
-  })  
-},{
+var dataHandler = function(data, done) {
+    someAction(data, function() {
+      done()
+    })
+}
+
+var configOptions = {
   db: 'https://url.to.couchdb/registry/_changes',
   include_docs:true,
   sequence:'.sequence',
   now:false,
   concurrency:5
-})
+}
+
+changes(dataHandler, configOptions)
 ```
 
 API
