@@ -1,6 +1,6 @@
 {
   "name": "concurrent-couch-follower",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "a couch follower wrapper that you can use to be sure you don't miss any documents even if you process them asynchronously.",
   "main": "index.js",
   "scripts": {
