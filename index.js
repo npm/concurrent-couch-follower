@@ -11,8 +11,17 @@ module.exports = function (handler, config) {
 
   // include_docs by default
   if (config.include_docs === undef) config.include_docs = true
-
-  var seq = concurrentSeq(config.sequence || '.sequence')
+ 
+  var seq
+  if(typeof config.sequence === 'function'){
+    if(config.since === undefined) {
+      throw new Error("config.since must be set and must be the last value you saved in your database if using custom persist backend. if you dont have one set this to 0")
+    }
+    seq = concurrentSeq.starter(config.sequence,{savedValue:config.since})
+    seq.value = config.since
+  } else {
+    seq = concurrentSeq(config.sequence || '.sequence')
+  }
   config.since = seq.value
   var firstStart = (seq.value === 0)
   if (firstStart) {
