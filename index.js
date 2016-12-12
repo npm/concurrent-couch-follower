@@ -32,8 +32,9 @@ module.exports = function (handler, config) {
   var pressure = pressureStream(function (change, next) {
     var saveSeq = seq(change.seq)
     handler(change, function (err, data) {
-      saveSeq()
-      next(err, data)
+      saveSeq(function (err2) {
+        next(err2 || err, data)
+      })
     })
   }, {
     high: config.concurrency || 4,
