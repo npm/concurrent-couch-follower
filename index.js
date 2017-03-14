@@ -35,11 +35,7 @@ module.exports = function (handler, config) {
       saveSeq()
       next(err, data)
     })
-  }, {
-    high: config.concurrency || 4,
-    max: config.concurrency || 4,
-    low: config.low || config.concurrency || 4
-  })
+  }, config.concurrency || 4)
 
   changes.on('error', function (err) {
     pressure.emit('error', err)
@@ -52,9 +48,11 @@ module.exports = function (handler, config) {
     return seq.value
   }
 
+  
   // hack to make ending the streams work-ish
   // i only end in tests anyway.
   pressure.end = function(){
+    //
     changes.destroy()
     this.destroy()
   }

@@ -43,6 +43,7 @@ test("can look at some changes",function(t){
   })
 
   eos(s,function(err){
+    console.log(err+' '+err.stack)
     t.ok(err,'how i end changes-stream with destroy triggers premature close error')
   })
 
