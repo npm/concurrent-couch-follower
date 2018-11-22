@@ -25,7 +25,7 @@ changes(dataHandler, configOptions)
 API
 ---
 
-### changes(handler,options)
+### `changes(handler,options)`
 
 - handler = function(change,done) 
  is a function that is called for every document
@@ -41,14 +41,14 @@ API
   - `now`, if `true`, set the `changes-stream` property `since` to "now" (instead of 0) on the first start (before `.sequence` has been created)
   - `since` only used, but is required, if you are using a custom backend to save the sequence ids. when you pass a function as sequence.
 
--  stream = changes(handle,options)
-  - sream , return value is a readable object stream of `data` passed back with `done(err,data)`
+-  `stream = changes(handle,options)`
+    - `sream` , return value is a readable object stream of `data` passed back with `done(err,data)`
 
-- stream.sequence()
- - returns current sequence id saved to disk. useful for logging.
+- `stream.sequence()`
+    - returns current sequence id saved to disk. useful for logging.
 
-- WARNING! stream.end()
- - this calls destroy on the changes-stream and the through instead of properly ending them.
+- WARNING! `stream.end()`
+    - this calls destroy on the changes-stream and the through instead of properly ending them.
     - this triggers a "premature close" error from `changes-stream` and is something that just has to be worked on. bind `error` or use `end-of-stream`
 
 
