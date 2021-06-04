@@ -42,7 +42,7 @@ API
   - `since` only used, but is required, if you are using a custom backend to save the sequence ids. when you pass a function as sequence.
 
 -  `stream = changes(handle,options)`
-    - `sream` , return value is a readable object stream of `data` passed back with `done(err,data)`
+    - `stream` , return value is a readable object stream of `data` passed back with `done(err,data)`
 
 - `stream.sequence()`
     - returns current sequence id saved to disk. useful for logging.
